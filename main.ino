@@ -31,7 +31,7 @@ class cLED {
 ///_-_-_-_-_-_-_-_-_-_-_-_-_ DEFINES _-_-_-_-_-_-_-_-_-_-_-_-_\\\
 
 
-#DEFINE SERVO_STEP 1
+#define SERVO_STEP_SIZE 1
 
 
 
