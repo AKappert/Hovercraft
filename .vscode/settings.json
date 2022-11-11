@@ -3,5 +3,8 @@
     "arduino.defaultBaudRate": 9600,
     "arduino.analyzeOnOpen": false,
     "C_Cpp.errorSquiggles": "Disabled",
-    "cmake.configureOnOpen": false
+    "cmake.configureOnOpen": false,
+    "files.associations": {
+        "servo.h": "c"
+    }
 }
