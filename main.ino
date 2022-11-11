@@ -1,13 +1,12 @@
 //_-_-_-_-_-_-_-_-_-_-_-_-_ INCLUDES _-_-_-_-_-_-_-_-_-_-_-_-_\\ 
 #define __AVR_ATmega328__
 #include <Arduino.h>
-#include <avr/iom328p.h>
+// #include <avr/iom328p.h>
 #include <avr/interrupt.h>
 #include <stdlib.h>
 #include <avr/io.h>
-#include <avr/io.h>
 #include <stdio.h>
-
+#include "Components/defines.h"
 ///_-_-_-_-_-_-_-_-_-_-_-_-_ DEFINES _-_-_-_-_-_-_-_-_-_-_-_-_\\\ 
 
 
@@ -137,17 +136,6 @@ void gpio_init() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 /////_-_-_-_-_-_-_-_-_-_-_-_-_ SETUP _-_-_-_-_-_-_-_-_-_-_-_-_\\\\\ 
 void setup() {
 //  (  1 ) Divide servo's 180deg range of motion into 180 / SERVO_STEP
@@ -162,9 +150,7 @@ void setup() {
 //  (  9 ) 
 //  ( 10 ) 
 //  ( 11 ) 
- 
 }
-
 
 
 ////_-_-_-_-_-_-_-_-_-_-_-_-_ MAIN _-_-_-_-_-_-_-_-_-_-_-_-_\\\\ 
@@ -181,4 +167,9 @@ void loop() {
 //  ( 10 ) 
 //  ( 11 ) 
 
+  // put your main code here, to run repeatedly:
+
+
+//      ( 1 ) Divide servo's 180deg range of motion into 180 / SERVO_STEP
+//      ( 2 ) 
 }
