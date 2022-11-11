@@ -13,8 +13,8 @@ void setup()
     config_ISR();
     timer2_PWM_init();
     timer1_1Hz_init(1); //the 1 enables Input Capture Interrupt
-    Servo curr_servo;
-    curr_servo.attach(SERVO_PIN);
+    //Servo curr_servo;
+    //curr_servo.attach(SERVO_PIN);
     //init_servo(myservo);
 }
 
