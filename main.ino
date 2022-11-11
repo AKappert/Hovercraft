@@ -1,68 +1,10 @@
 //_-_-_-_-_-_-_-_-_-_-_-_-_ INCLUDES _-_-_-_-_-_-_-_-_-_-_-_-_\\ 
-
+//#define __AVR_ATmega328__
+#define __AVR_ATmega32U4__
 #include <avr/interrupt.h>
 #include <stdlib.h>
 #include <avr/io.h>
 #include <stdio.h>
-
-
-///_-_-_-_-_-_-_-_-_-_-_-_-_ CLASSES _-_-_-_-_-_-_-_-_-_-_-_-_\\\ 
- 
-class cLED {
-
-  private:
-    enum LED_TYPE led_type;
-    bool IS_ON = false;    //true = on.
-    float dim_value = 0;   //0-255.
-
-  public:
-  
-    //cLED default constructor
-    cLED() {
-      led_type = DISCRETE;
-    }
-
-    //cLED constructor with initializer. IDEALY USE THIS CONSTRUCTOR FOR DISCRETE LEDs
-    cLED(bool on, LED_TYPE l_type) {
-      IS_ON = on;
-      led_type = l_type;
-    }
-
-    //cLED constructor with initializer. IDEALY USE THIS CONSTRUCTOR FOR PWM LEDs
-    cLED(bool on, LED_TYPE l_type, float dimmness) {
-      IS_ON = on;
-      led_type = l_type;
-      dim_value = dimmness;
-    }
-
-    // Function used to set arduino ports
-    void initialize_LED(){
-      
-    }
-
-
-    // Function used to set the LED
-    void set_LED(){
-      // LED is dimmable since it is PWM
-      if (led_type == PWM){
-
-      }
-      // LED can only be on / off since it is DISCRETE
-      else if (led_type == DISCRETE) {
-
-      }
-    }
-
-
-
-
-
-};
-
-class MAX_HEAP {
-  
-};
-
 
 ///_-_-_-_-_-_-_-_-_-_-_-_-_ DEFINES _-_-_-_-_-_-_-_-_-_-_-_-_\\\ 
 
@@ -75,11 +17,13 @@ class MAX_HEAP {
 
 #define LED_PIN PB3
 #define NANO_LED_PIN PB5
+
 //_-_-_-_-_-_-_-_-_-_-_-_-_ VARIABLES _-_-_-_-_-_-_-_-_-_-_-_-_\\\ 
   
-  //Enum used as a machine state "flag"
+  // Enums
   enum MACHINE_STATE {SHUTDOWN, CALCULATING, MOVING, PAUSING};
   enum LED_TYPE {PWM, DISCRETE};
+  enum SERVO_STATE {STATIC, MOVING_CW, MOVING_CCW};
 
 // Flags structure
   volatile struct {
@@ -101,6 +45,78 @@ static volatile struct {
   uint16_t t_start1;
   uint16_t t_end1;
 } PULSE_data; 
+
+
+
+
+///_-_-_-_-_-_-_-_-_-_-_-_-_ CLASSES _-_-_-_-_-_-_-_-_-_-_-_-_\\\ 
+ 
+class cLED {
+/*
+
+This class is used to represent an LED. It can either be a pwm controlled LED
+with adjustable brightness, or a discrete LED that can be on or off. This LED
+object will be responsible for initializing it's port pins, turning the object 
+on or off, and setting the brightness if possible.
+
+*/
+  private:
+    enum LED_TYPE led_type;
+    bool IS_ON = false;    //true = on.
+    float dim_value = 0;   //0-255.
+
+  public:
+  
+    //cLED default constructor
+    cLED() {
+      led_type = DISCRETE;
+    }
+
+    //cLED constructor with initializer. IDEALY USE THIS CONSTRUCTOR FOR DISCRETE LEDs
+    cLED(bool on, LED_TYPE l_type) {
+      IS_ON = on;
+      led_type = l_type;
+    }
+
+    //cLED constructor with initializer. IDEALY USE THIS CONSTRUCTOR FOR PWM LEDs
+    cLED(bool on, LED_TYPE l_type, float dimness) {
+      IS_ON = on;
+      led_type = l_type;
+      dim_value = dimness;
+    }
+
+    // Function used to set arduino ports
+    void initialize_LED(){
+
+    }
+
+    // Function used to set PWM dimness value
+    void set_dimness (float dimness){
+      dim_value = dimness;
+    }
+
+    // Function used to set the LED
+    void set_LED(){
+      // LED is dimmable since it is PWM
+      if (led_type == PWM){
+        
+      }
+      // LED can only be on / off since it is DISCRETE
+      else if (led_type == DISCRETE) {
+
+      }
+    }
+
+
+
+};
+
+// I'm thinking that storing the list of distance values with the servo angle as a heap might work
+class cMAX_HEAP {
+  
+};
+
+
 
 //_-_-_-_-_-_-_-_-_-_-_-_-_ FUNCTIONS _-_-_-_-_-_-_-_-_-_-_-_-_\\\ 
 
