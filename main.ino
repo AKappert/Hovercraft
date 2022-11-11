@@ -40,16 +40,28 @@ class cLED {
 
 
 void setup() {
-  // put your setup code here, to run once:
 
+//  (  1 ) Divide servo's 180deg range of motion into 180 / SERVO_STEP
+//  (  2 ) Create array or datatype (ie an object class) to store each angle
+//  (  3 ) 
+//  (  4 ) 
+//  (  5 ) 
+//  (  6 ) 
+//  (  7 ) 
+//  (  8 ) 
+//  (  9 ) 
+//  ( 10 ) 
+//  ( 11 ) 
 }
 
+
+////_-_-_-_-_-_-_-_-_-_-_-_-_ MAIN _-_-_-_-_-_-_-_-_-_-_-_-_\\\\
+
 void loop() {
-  // put your main code here, to run repeatedly:
 
 
-//      ( 1 ) Divide servo's 180deg range of motion into 180 / SERVO_STEP
-//      ( 2 ) 
+
+
 
 
 }
