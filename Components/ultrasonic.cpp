@@ -23,21 +23,8 @@ static volatile struct {
 int int0_trigged = 0;
 int counter = 0;
 
-//Function used to initialize pins as input or output and set high or low
-void gpio_init() {
-  cli(); //Stop Interrupts
-  DDRD = (0<<ECHO_PIN); //ECHO_PIN as input
-  DDRB = ((1<<LED_PIN) | (1<<TRIG_PIN)); // LED_PIN and TRIG_PIN as output
-  sei(); //Allow Interrupts
-} //end gpio_init
 
-void uart_init() { // TX and RX init with IRQ
-  UBRR0H = (uint8_t)((UBRR)>>8); // Set the UART speed as defined by UBRR
-  UBRR0L = (uint8_t)UBRR;
-  UCSR0B|=(1<<TXCIE0)|(1<<TXEN0); // Enable TX and TX IRQ.
-  UCSR0B|=(1<<RXCIE0)|(1<<RXEN0); // Enable RX and RX IRQ 
-  UCSR0C=(3<<UCSZ00); // Asynchronous UART, 8-N-1
-}// end UART init
+
 
 void config_ISR()
 {
@@ -127,7 +114,7 @@ void writeUSToLED(int dist)
     OCR2B = range;
 }
 
-void print_us_distance()
+void print_US_distance()
 {
   Serial.print("Distance = ");
   Serial.print(PULSE_data.pulse0);

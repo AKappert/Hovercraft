@@ -1,3 +1,5 @@
+#include "defines.h"
+
 long time;
 int dist;
 int range;
@@ -46,19 +48,19 @@ long map(long x, long in_min, long in_max, long out_min, long out_max) {
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
-void ddr_init()
+
+int read_IR_Sensor()
 {
-  DDRC = (1<<DATA_PIN);   //Sets only A0 as INPUT
-  DDRB = (1<<LED_PIN);
-  DDRB |= (1<<NANO_LED_PIN);
-  TCCR2A = _BV(COM2A1) | _BV(COM2B1) | _BV(WGM21) | _BV(WGM20);
-  TCCR2B = _BV(CS22);
+  int result = readFromPin(DATA_PIN);
+  float volts = result * 0.004882812;
+  dist = 13*pow(volts, -1)* 2.54 -3;
+  return dist;
 }
 
-void uart_init() { // TX and RX init with IRQ
-  UBRR0H = (uint8_t)((UBRR)>>8); // Set the UART speed as defined by UBRR
-  UBRR0L = (uint8_t)UBRR;
-  UCSR0B|=(1<<TXCIE0)|(1<<TXEN0); // Enable TX and TX IRQ.
-  UCSR0B|=(1<<RXCIE0)|(1<<RXEN0); // Enable RX and RX IRQ 
-  UCSR0C=(3<<UCSZ00); // Asynchronous UART, 8-N-1
-}// end UART init
+void print_IR_distance(int dist)
+{
+  Serial.print("Dist :")
+  Serial.println(dist);
+}
+
+
