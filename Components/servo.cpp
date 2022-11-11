@@ -5,11 +5,7 @@
 #define LEFT 0
 #define RIGHT 180
 
-void init_servo(Servo myservo)
-{
-    myservo.attach(SERVO_PIN);
-    myservo.write(MIDDLE);
-}
+void init_servo(Servo myservo){}
 
 void servo_left(Servo myservo)
 {
