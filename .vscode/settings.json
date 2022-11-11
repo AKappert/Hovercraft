@@ -1,5 +1,6 @@
 {
     "arduino.path": "C:\\Program Files (x86)\\Arduino",
     "arduino.defaultBaudRate": 9600,
-    "arduino.analyzeOnOpen": false 
+    "arduino.analyzeOnOpen": false,
+    "C_Cpp.errorSquiggles": "Disabled"
 }

@@ -50,6 +50,4 @@ void loop() {
 
 //      ( 1 ) Divide servo's 180deg range of motion into 180 / SERVO_STEP
 //      ( 2 ) 
-
-
 }
