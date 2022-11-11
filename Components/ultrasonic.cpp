@@ -89,33 +89,33 @@ ISR (INT0_vect) {// This gets called every time pin PB2 is changed
 }
 
 long analog;
-int dist;
-int range;
+int us_dist;
+int us_range;
 
-void writeUSToLED(int dist)
+void writeUSToLED(int us_dist)
 {  
-    if(dist > MAX_RANGE)
+    if(us_dist > MAX_RANGE)
     {
-      range = 250;
+      us_range = 250;
       PORTB = ((1<<NANO_LED_PIN));
     }
 
-    else if(dist < MIN_RANGE)
+    else if(us_dist < MIN_RANGE)
     {
-      range = 0;
+      us_range = 0;
       PORTB = ((1<<NANO_LED_PIN) | (1<<TRIG_PIN));
     }
     else
     {
-      range = (dist-MIN_RANGE)*10.2;
+      us_range = (us_dist-MIN_RANGE)*10.2;
       PORTB &= ~((1<<NANO_LED_PIN) | (1<<TRIG_PIN));
     }
-    OCR2A = range;
-    OCR2B = range;
+    OCR2A = us_range;
+    OCR2B = us_range;
 }
 
 void print_US_distance()
 {
-  Serial.print("Distance = ");
-  Serial.print(PULSE_data.pulse0);
+  Serial.print("ir_distance = ");
+  Serial.println(PULSE_data.pulse0);
 }
