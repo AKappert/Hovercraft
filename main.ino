@@ -1,8 +1,10 @@
 //_-_-_-_-_-_-_-_-_-_-_-_-_ INCLUDES _-_-_-_-_-_-_-_-_-_-_-_-_\\ 
-//#define __AVR_ATmega328__
-#define __AVR_ATmega32U4__
+#define __AVR_ATmega328__
+#include <Arduino.h>
+#include <avr/iom328p.h>
 #include <avr/interrupt.h>
 #include <stdlib.h>
+#include <avr/io.h>
 #include <avr/io.h>
 #include <stdio.h>
 
@@ -122,17 +124,17 @@ class cMAX_HEAP {
 
 
 // Function used to set servo to a int value from 0-180
-void setServoAngle(int deg){
+void setServoAngle(int deg) {
 
 }
 
-//Function used to initialize
+// Function used to initialize
 void gpio_init() {
   cli(); //Stop Interrupts
   DDRD = (0<<ECHO_PIN); //ECHO_PIN as input
   DDRB = ((1<<LED_PIN) | (1<<TRIG_PIN)); // LED_PIN and TRIG_PIN as output
   sei(); //Allow Interrupts
-} //end gpio_init
+}
 
 
 
@@ -148,7 +150,6 @@ void gpio_init() {
 
 /////_-_-_-_-_-_-_-_-_-_-_-_-_ SETUP _-_-_-_-_-_-_-_-_-_-_-_-_\\\\\ 
 void setup() {
-
 //  (  1 ) Divide servo's 180deg range of motion into 180 / SERVO_STEP
 //  (  2 ) Create array or datatype (ie an object class) to store each angle.
 //          -> min/max heaps could be a good idea
@@ -163,6 +164,7 @@ void setup() {
 //  ( 11 ) 
  
 }
+
 
 
 ////_-_-_-_-_-_-_-_-_-_-_-_-_ MAIN _-_-_-_-_-_-_-_-_-_-_-_-_\\\\ 
