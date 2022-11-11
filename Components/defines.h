@@ -1,30 +1,29 @@
-// INCLUDES
+//  ======================================== INCLUDES ========================================
 
-
-//#include "C:\Users\Andrew\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\avr\include\avr"
 #include "Arduino.h"
 #include "avr/interrupt.h"
 #include "stdlib.h"
 #include "avr/io.h"
 
-// PIN DEFINITIONS
+
+//  ======================================== PINS ========================================
+
 // LED PINS
 #define LED_PIN PB3 
 #define NANO_LED_PIN PB5
-
 // SERVO PINS
 #define SERVO_PIN PB1
-
 // ULTRASONIC SENSOR PINS
 #define ECHO_PIN PD2
 #define TRIG_PIN PB5
-
 // INFRARED SENSOR PINS
 #define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
 #define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
 #define DATA_PIN A0
 
-#define F_CPU 16000000UL
+//  ======================================== CONSTANTS ========================================
+
+//#define F_CPU 16000000UL
 #define BAUD 9600UL
 #define UBRR ((F_CPU)/((BAUD)*(16UL))-1)
 #define SCL_CLOCK 100000L
