@@ -1,7 +1,7 @@
 // INCLUDES
 
-#include "C:\Program Files (x86)\Arduino\libraries\Servo\src\Servo.h"
-#include "C:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries\Wire\src\Wire.h"
+//#include "C:\Program Files (x86)\Arduino\libraries\Servo\src\Servo.h"
+//#include "C:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries\Wire\src\Wire.h"
 #include "Arduino.h"
 #include "avr/interrupt.h"
 #include "stdlib.h"
